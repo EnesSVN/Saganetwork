@@ -28,11 +28,7 @@ public class UserController {
     public ResponseEntity<List<User>>getUsers(){
         return ResponseEntity.ok().body(userService.getUsers());
     }
-    @GetMapping("/teachers")
-    public ResponseEntity<List<User>>getTeachers(){
 
-        return null;
-    }
 
     @PostMapping("/user/save")
     public ResponseEntity<User>saveUser(@RequestBody User user){
@@ -46,13 +42,13 @@ public class UserController {
         return ResponseEntity.created(uri).body(userService.saveRole(role));
     }
 
-    @PostMapping("/role/addtuuser")
+    @PostMapping("/role/addtouser")
     public ResponseEntity<Role>addRoleToUser(@RequestBody RoleToUserForm form){
         userService.addRoleToUser(form.getName(),form.getRolName());
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/get/user/{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<Optional<User>> getUserById(@PathVariable(name = "id") Long id){
         User user = userService.getUserById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found User with id = " + id));

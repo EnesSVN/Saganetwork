@@ -23,7 +23,6 @@ public class QuestionController {
 
     private final QuestionService questionService;
 
-    private final AnswerRp answerRp;
 
     private final UserService userService;
 
